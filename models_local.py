@@ -1,35 +1,10 @@
-import os
-import requests
-import zipfile
+
+
 import torch
 from torch import nn
 import torchvision.models as torchvision_models
 
-# -----------------------------
-# Download model if not present
-# -----------------------------
-MODEL_URL = "https://github.com/ruccii/Pediatric-Bone-Age-Prediction/releases/tag/DLmodel/final_best_model.zip"
-ZIP_PATH = "final_best_model.zip"
-MODEL_PATH = "final_best_model.pth"
-
-def download_model():
-    if not os.path.exists(MODEL_PATH):
-        print("Downloading model...")
-        r = requests.get(MODEL_URL)
-        with open(ZIP_PATH, "wb") as f:
-            f.write(r.content)
-
-        print("Extracting model...")
-        with zipfile.ZipFile(ZIP_PATH, 'r') as zip_ref:
-            zip_ref.extractall()
-
-        os.remove(ZIP_PATH)  # optional: delete zip after extraction
-
-download_model()
-
-# -----------------------------
 # Model class definition
-# -----------------------------
 class ResNet50BoneAge(nn.Module):
     def __init__(self):
         super(ResNet50BoneAge, self).__init__()
@@ -59,9 +34,7 @@ class ResNet50BoneAge(nn.Module):
         output = self.fc(combined)
         return output
 
-# -----------------------------
 # Load model function
-# -----------------------------
 def load_model():
     model_path = 'final_best_model.pth'
     try:
@@ -102,7 +75,5 @@ def load_model():
     
     return model, boneage_mean, boneage_std, channel_mean, channel_std
 
-# -----------------------------
 # Load normalization params for use in other modules
-# -----------------------------
 model, boneage_mean, boneage_std, channel_mean, channel_std = load_model()
