@@ -8,7 +8,7 @@ import torchvision.models as torchvision_models
 # -----------------------------
 # Download model if not present
 # -----------------------------
-MODEL_URL = "https://github.com/ruccii/Pediatric-Bone-Age-Prediction/releases/tag/DLmodel/final_best_model.zip"
+MODEL_URL = "https://github.com/ruccii/Pediatric-Bone-Age-Prediction/releases/download/v1.0/final_best_model.zip"
 ZIP_PATH = "final_best_model.zip"
 MODEL_PATH = "final_best_model.pth"
 
