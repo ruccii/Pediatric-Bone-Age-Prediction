@@ -38,4 +38,8 @@ A Streamlit app for predicting pediatric bone age from hand X-ray images using a
 - Test with grayscale or RGB X-ray images.
 - Predictions logged in `predictions.log`.
 
+
+## Deployed APP
+https://pediatric-bone-age-prediction-rucci.streamlit.app/?embed_options=dark_theme
+
 Developed by Ruchi Rathod.
